@@ -20,13 +20,11 @@ namespace SmartOperationDx
         private int _counter = 0;
         private readonly string[] aiMessages =
         {
-            "Warning, if predictions are accurate a limited shutdown of production will occur in approximately 3 hours",
-            "It seems like the issue might be stemming from a miss configuration of a PID tag [tag name]",
-            "Calculations estimate that the PID tag should be recalibrated to \nP:x \nI:x \nD:x ",
-            "Sure, I have adjusted the prediction widgets to show the predictions for the system if the PID tag [tag name] was recalibrated"
+            "Warning, if predictions are accurate a limited shutdown \nof production will occur in approximately 3 hours",
+            "It seems like the issue might be stemming from\n a misconfiguration of the PID tag [TIC105101]",
+            "Calculations estimate that the PID tag [TIC105101]\n should be recalibrated to \nP:0.5 \nI:20 \nD:5 ",
+            "Sure, I have adjusted the prediction widgets\n to show the predictions for the system if the PID tag [TIC105101] was recalibrated"
         };
-
-        private Line predictionLine;
 
         public MainWindow()
         {
@@ -215,7 +213,7 @@ namespace SmartOperationDx
 
             GraphCanvas.Children.Add(targetLine);
 
-            predictionLine = new Line
+            Line predictionLine = new Line
             {
                 X1 = 3,
                 Y1 = GraphCanvas.Height - 3,
@@ -227,7 +225,6 @@ namespace SmartOperationDx
 
             GraphCanvas.Children.Add(predictionLine);
         }
-
         private void DrawUpdatedGraph()
         {
             //GraphCanvas.Children.Remove(predictionLine);
@@ -250,15 +247,15 @@ namespace SmartOperationDx
                 Text = "New Prediction",
                 FontSize = 12,
                 Foreground = Brushes.DeepSkyBlue,
-                RenderTransform = new TranslateTransform(GraphCanvas.Width - 10, 50)
+                RenderTransform = new TranslateTransform(GraphCanvas.Width - 30, 50)
             };
 
             // Add a sample line to the legend
             Line legendLine = new Line
             {
-                X1 = GraphCanvas.Width - 20,
+                X1 = GraphCanvas.Width - 40,
                 Y1 = 60,
-                X2 = GraphCanvas.Width - 40,
+                X2 = GraphCanvas.Width - 60,
                 Y2 = 60,
                 Stroke = Brushes.DeepSkyBlue,
                 StrokeThickness = 2,
@@ -276,15 +273,15 @@ namespace SmartOperationDx
                 Text = "Target",
                 FontSize = 12,
                 Foreground = Brushes.Red,
-                RenderTransform = new TranslateTransform(GraphCanvas.Width - 10, 10)
+                RenderTransform = new TranslateTransform(GraphCanvas.Width -30 , 10)
             };
 
             // Add a sample line to the legend
             Line legendLine = new Line
             {
-                X1 = GraphCanvas.Width - 20,
+                X1 = GraphCanvas.Width - 40,
                 Y1 = 20,
-                X2 = GraphCanvas.Width - 40,
+                X2 = GraphCanvas.Width - 60,
                 Y2 = 20,
                 Stroke = Brushes.Red,
                 StrokeThickness = 2,
@@ -300,15 +297,15 @@ namespace SmartOperationDx
                 Text = "Prediction",
                 FontSize = 12,
                 Foreground = new SolidColorBrush(Color.FromRgb(211, 211, 211)),
-                RenderTransform = new TranslateTransform(GraphCanvas.Width - 10, 30)
+                RenderTransform = new TranslateTransform(GraphCanvas.Width - 30, 30)
             };
 
             // Add a sample line to the legend
             Line legendLine2 = new Line
             {
-                X1 = GraphCanvas.Width - 20,
+                X1 = GraphCanvas.Width - 40,
                 Y1 = 40,
-                X2 = GraphCanvas.Width - 40,
+                X2 = GraphCanvas.Width - 60,
                 Y2 = 40,
                 Stroke = new SolidColorBrush(Color.FromRgb(211, 211, 211)),
                 StrokeThickness = 2,
