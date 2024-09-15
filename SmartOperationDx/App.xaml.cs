@@ -1,9 +1,4 @@
 ﻿using DevExpress.Xpf.Core;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
 
 namespace SmartOperationDx
@@ -15,7 +10,6 @@ namespace SmartOperationDx
     {
         static App()
         {
-            //CompatibilitySettings.UseLightweightThemes = true;
             ApplicationThemeHelper.ApplicationThemeName = Theme.Win11DarkName;
 
         }

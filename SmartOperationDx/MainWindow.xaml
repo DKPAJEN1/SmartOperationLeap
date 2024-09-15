@@ -26,6 +26,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Window.Resources>
     <Grid >
         <dx:DXTabControl>
@@ -43,7 +44,6 @@
                             <RowDefinition Height="50"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="Smart Operation Assistant Chat" Height="30" Margin="0,0,0,0"></TextBlock>
-                        <!--<dxre:RichEditControl Grid.Row="1" Name="AssistantChatWindowDx" ReadOnly="True" VerticalContentAlignment="Bottom"></dxre:RichEditControl>-->
                         <Grid Grid.Row="1">
                             <Border BorderThickness="1" BorderBrush="#D3D3D3" Background="Transparent" CornerRadius="10" Margin="0,0,0,15">
                             </Border>
@@ -54,8 +54,6 @@
                                 <RichTextBox Name="UserChatInput" PreviewKeyDown="UserChatInput_OnKeyDown" Foreground="#D3D3D3" Background="Transparent"/>
                             </Border>
                         </Grid>
-                        <!--<RichTextBox Grid.Row="1" Name="AssistantChatWindow" BorderThickness="1" VerticalContentAlignment="Bottom" BorderBrush="#D3D3D3" Background="Transparent"  Margin="0,0,0,15" IsReadOnly="True"></RichTextBox>-->
-                        <!--<RichTextBox Grid.Row="2" Name="UserChatInput" BorderThickness="1" BorderBrush="#D3D3D3" PreviewKeyDown="UserChatInput_OnKeyDown" Foreground="#D3D3D3" Background="Transparent" Height="50" VerticalAlignment="Bottom"></RichTextBox>-->
                     </Grid>
                     <Grid Grid.Column="1" Margin="60,0,0,0" >
                         <Grid.ColumnDefinitions>
@@ -70,16 +68,14 @@
                         <TextBlock Grid.Row="0" Text="Production - Kilogram/Minute" Foreground="#D3D3D3" Height="30" Margin="0,0,0,0"></TextBlock>
                         <Canvas Grid.Column="0" Grid.Row="1" Name="GraphCanvas" Height="300" HorizontalAlignment="Left" Width="980"></Canvas>
                         <TextBlock Margin="0,25,0,0" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Text="Predicted High Priority Alarms within next 3 hours"></TextBlock>
-     
                         <dxg:GridControl Name="AlarmTable" Margin="0,50,0,0" SelectionMode="None" GroupCount="0"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2">
                             <dxg:GridControl.View>
                                 <dxg:TableView BestFitMode="AllRows" ShowGroupPanel="False" TotalSummaryPosition="Bottom"/>
-                                
                             </dxg:GridControl.View>
                             <dxg:GridControl.Columns>
                                 <dxg:GridColumn Header="Tag Name" FieldName="TagName"></dxg:GridColumn>
                                 <dxg:GridColumn Header="Alarm Type" FieldName="AlarmType"></dxg:GridColumn>
-                                <dxg:GridColumn  Header="Severity" FieldName="Severity"></dxg:GridColumn>
+                                <dxg:GridColumn Header="Severity" FieldName="Severity"></dxg:GridColumn>
                                 <dxg:GridColumn Width="150" Header="Message" FieldName="Message"></dxg:GridColumn>
                                 <dxg:GridColumn Width="150" Header="Risk of Occurrence" FieldName="OccurrenceRisk"></dxg:GridColumn>
                             </dxg:GridControl.Columns>
@@ -94,8 +90,446 @@
             <dx:DXTabItem Header="AssetInsight">
                 <dx:DXImage Source="Images/AssetInsight.png" VerticalAlignment="Top"></dx:DXImage>
             </dx:DXTabItem>
+            <dx:DXTabItem Header="Potential">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Grid Margin="0,10,0,0" HorizontalAlignment="Center" Width="900">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="400"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Canvas HorizontalAlignment="Left">
+                                <Line X1="0" Y1="0" X2="50" Y2="0" Stroke="Red" StrokeThickness="5.5"/>
+                            </Canvas>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Unlock the full potential of your process safety" HorizontalAlignment="Left" FontSize="40"></TextBlock>
+                        </Grid>
+
+
+                        <Grid Grid.Row="1" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="100"></RowDefinition>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="80"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Canvas>
+                                <Line X1="0" Y1="0" X2="45" Y2="0" Stroke="Red" StrokeThickness="5.5"/>
+                            </Canvas>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="ABB Ability™ SafetyInsight™" HorizontalAlignment="Left" FontSize="40" Margin="0,0,0,0"></TextBlock>
+                            <Line Grid.Row="2" X1="0" Y1="0" X2="30" Y2="0" Stroke="Red" StrokeThickness="5"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Enhance process safety management &#x0a;by digitalizing the process safety lifecycle" HorizontalAlignment="Left" FontSize="25"></TextBlock>
+                            <TextBlock Grid.Row="4" Name="SafetyInsightPitchText" HorizontalAlignment="Left" FontSize="14"></TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="2" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Canvas Name="EngineeringApplicationsLine">
+                                <Line X1="0" Y1="0" X2="30" Y2="0" Stroke="Red" StrokeThickness="4"/>
+                            </Canvas>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Engineering Applications" HorizontalAlignment="Left" FontSize="25"></TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="3" HorizontalAlignment="Left" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Expander Grid.Row="0" Header="HAZOP and LOPA Modules" FontSize="18" HorizontalAlignment="Left" IsExpanded="{Binding IsChecked, ElementName=RadioButton1}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock>
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Minimize engineering effort</Bold> when transitioning between lifecycle phases (Hazard Identification - HAZID and HAZOP, LOPA, SRS, SIF Design).
+                                            </TextBlock>
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Provide MAH lifecycle management</Bold> with a MoC audit trail and action tracking that allows for each MAH to be managed throughout the safety lifecycle.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Provides a digital record</Bold> that enable the value data to be made available to the operation and maintenance teams for decision support.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Ensure compliance</Bold> with IEC 61508 (Ed. 2.0) and IEC 61511 (Ed. 2.0) for the hazard and risk assessment phases.
+                                            </TextBlock>
+
+                                        </TextBlock.Inlines>
+
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="0" x:Name="RadioButton1" GroupName="Expanders" Visibility="Collapsed" />
+
+                            <Expander Grid.Row="1" Header="SIF Designer Module" Margin="0,15,0,0" FontSize="18" IsExpanded="{Binding IsChecked, ElementName=RadioButton2}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock>
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Reduce operational risk</Bold> by helping avoid the development of under-engineered SIFs, which result in higher operational risk.
+                                            </TextBlock>
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Minimize engineering effort</Bold> required with an efficient, intuitive and structured approach to documenting each SIF.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Increase efficiency</Bold> by leveraging a digital platform that provides connectivity and reduces effort required to gather actual SIF performance data.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Manage SIF lifecycle</Bold> with an audit trail that allows for SIFs to be managed throughout safety lifecycle.
+                                            </TextBlock>
+
+                                        </TextBlock.Inlines>
+
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="1" x:Name="RadioButton2" GroupName="Expanders" Visibility="Collapsed" />
+
+                            <Expander Grid.Row="2" Header="Key Features" Margin="0,15,0,0" FontSize="18" IsExpanded="{Binding IsChecked, ElementName=RadioButton3}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Industry Standards</Bold> Developed in accordance with industry standards such as IEC61508 and IEC61511 and industry standard methodologies.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Greenfield or Brownfield</Bold> Creates an editable digital record of a companies basis of safety, either as part of the engineering activities in a greenfield project (EPCs) or utilizing existing brownfield records using low cost migration tools and services.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Evergreen registers</Bold> Provides an evergreen registers of all Major Accident Hazards (MAHs) and SIFs with audit trail and action tracking for ongoing Management of Change (MoC)
+                                            </TextBlock>
+
+                                        </TextBlock.Inlines>
+
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="2" x:Name="RadioButton3" GroupName="Expanders" Visibility="Collapsed" />
+
+                            <Expander Grid.Row="3" Header="Key Benefits" Margin="0,15,0,0" FontSize="18" IsExpanded="{Binding IsChecked, ElementName=RadioButton4}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock>
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Reduced engineering effort</Bold> Reduces engineering time and improves quality when transitioning between lifecycle phases (HAZID, HAZOP, LOPA, SRS, SIF Design)
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Ensures compliance</Bold> Ensures compliance with IEC 61508 (Ed. 2.0) and IEC 61511 (Ed. 2.0) for the hazard and risk assessment, SRS and Design phases
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Improves greenfield project delivery</Bold> Provides a digital enabled safety delivery by the EPC to the end-user at no extra cost (actually reduced cost due to engineering efficiencies)
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Optimized cost</Bold> Reduced CAPEX and OPEX achieved through the development of optimum SIF Designs operation and maintenance costs through
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Easy first step on a digital journey</Bold> Ensures the process safety digital twin is available in a centralized location for decision support for Operation and Maintenance teams (typically this information is under utilized).
+                                            </TextBlock>
+
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Minimizes cost</Bold> Reduces cost to implement supporting operation and maintenance applications to ensure protection layers remain effective
+                                            </TextBlock>
+
+                                        </TextBlock.Inlines>
+
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="3" x:Name="RadioButton4" GroupName="Expanders" Visibility="Collapsed" />
+
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="4" HorizontalAlignment="Left" Margin="0,30,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Canvas >
+                                <Line X1="0" Y1="0" X2="30" Y2="0" Stroke="Red" StrokeThickness="4"/>
+                            </Canvas>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Operation and Maintenance Applications" HorizontalAlignment="Left" FontSize="25"></TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="5" HorizontalAlignment="Left" Margin="0,30,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Expander Grid.Row="0" Header="Sustain &#x26; Improve Modules" FontSize="18" HorizontalAlignment="Left" IsExpanded="{Binding IsChecked, ElementName=RadioButton5}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Operational Risk Dashboard:</Bold> Avoids operating at higher risk of major process safety incident or unplanned out and aids decision support. Utilizes data from the engineering applications to provide support to O&#x26;M teams in simple risk matrix and bow-tie diagram views.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Bypass Management:</Bold> Supports the management of bypasses and other barriers/protection layers which are to be taken out of service, through the automatic generation of current and historical bypass events. Includes bypass approval, permitted durations, and associated risk levels.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Automatic Shutdown Report:</Bold> Enables quicker start-up following an unplanned shutdown and helps to identify failures, through the automatic generation of a report at a shutdown level and/or for each SIF. The report identifies the trigger of the shutdown and if all actions were performed successfully.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Valve Verification:</Bold> Supports deferral of maintenance associated with safety system valves, through the tracking and trend of all valve movements. Pre-alerts indicates when valves are beginning to occur.
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                                <BulletDecorator>
+                                                    <BulletDecorator.Bullet>
+                                                        <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                    </BulletDecorator.Bullet>
+                                                </BulletDecorator>
+                                                <Bold>SIF Performance:</Bold> Enables actual performance data to be captured and compared against the design assumptions as required by IEC61511 Ed 2.0. Collects instrument reliability data per equipment group, identifying any bad actors and also provides an updated PFD avg for each SIF.
+                                            </TextBlock>
+
+                                        </TextBlock.Inlines>
+
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="0" x:Name="RadioButton5" GroupName="Expanders2" Visibility="Collapsed" />
+
+                            <Expander Grid.Row="1" Header="Key Features" Margin="0,15,0,0" FontSize="18" IsExpanded="{Binding IsChecked, ElementName=RadioButton6}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Operational Risk</Bold> Visualization of the current risk profile, incl. impact on accumulative risk from multiple failed barriers
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Demand Reporting</Bold> Automatic generation of shutdown levels / SIF reports and tracking all valve movements
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Bypass Management</Bold> Automatic generation of current and historical list of bypassed barriers /protections layers
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>SIF Performance</Bold> Collation and comparison of actual SIF data against predictions made earlier in the lifecycle
+                                            </TextBlock>
+
+                                        </TextBlock.Inlines>
+
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="1" x:Name="RadioButton6" GroupName="Expanders2" Visibility="Collapsed" />
+
+                            <Expander Grid.Row="2" Header="Key Benefits" Margin="0,15,0,0" FontSize="18" IsExpanded="{Binding IsChecked, ElementName=RadioButton7}">
+                                <Grid>
+                                    <TextBlock Grid.ColumnSpan="4" Margin="30,10,0,0" FontSize="14" TextWrapping="Wrap" >
+                                        <TextBlock.Inlines>
+                                            <TextBlock TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Increased safety &#x26; production </Bold> Provides information to quickly identify when operating at increased operational risk of a major process safety incident or production outage
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Increased safety</Bold> Ensures operational risks are properly managed when safety / protective systems are required to be taken out of service or are in a failed state
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                            <BulletDecorator>
+                                                <BulletDecorator.Bullet>
+                                                    <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                </BulletDecorator.Bullet>
+                                            </BulletDecorator>
+                                            <Bold>Reduced effort and increased production</Bold> Provides auto-generated views that enable prioritized actions to be identified and actioned to ensure the duration of unplanned outages are minimized
+
+                                                Provides access to the auto-generated reports (at the facility or remotely), minimizing lost production time by enabling faster start-up following an unplanned shutdown
+                                            </TextBlock>
+
+                                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+                                                <BulletDecorator>
+                                                    <BulletDecorator.Bullet>
+                                                        <Ellipse Margin="0,0,0,2.5" VerticalAlignment="Center" Height="5" Width="5" Fill="#D3D3D3"/>
+                                                    </BulletDecorator.Bullet>
+                                                </BulletDecorator>
+                                                <Bold>Reduced effort and increased production</Bold> Provides auto-generated views that enable prioritized actions to be identified and actioned to ensure the duration of unplanned outages are minimized
+
+                                                Provides access to the auto-generated reports (at the facility or remotely), minimizing lost production time by enabling faster start-up following an unplanned shutdown
+                                            </TextBlock>
+                                        </TextBlock.Inlines>
+                                </TextBlock>
+                                </Grid>
+                            </Expander>
+                            <RadioButton Grid.Row="2" x:Name="RadioButton7" GroupName="Expanders2" Visibility="Collapsed" />
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </dx:DXTabItem>
         </dx:DXTabControl>
-
-
     </Grid>
 </dx:ThemedWindow>

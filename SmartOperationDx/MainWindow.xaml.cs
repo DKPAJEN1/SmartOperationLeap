@@ -1,5 +1,4 @@
 ﻿using DevExpress.Xpf.Core;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +11,16 @@ using Paragraph = System.Windows.Documents.Paragraph;
 
 namespace SmartOperationDx
 {
+    public class Card
+    {
+        public string Header { get; }
+
+        public Card(string header)
+        {
+            Header = header;
+        }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -22,7 +31,7 @@ namespace SmartOperationDx
         {
             "Warning, if predictions are accurate a limited shutdown \nof production will occur in approximately 3 hours",
             "It seems like the issue might be stemming from\n a misconfiguration of the PID tag [TIC105101]",
-            "Calculations estimate that the PID tag [TIC105101]\n should be recalibrated to \nP:0.5 \nI:20 \nD:5 ",
+            "Calculations estimate that the PID tag [TIC105101]\n should be recalibrated to \nP: 0.5 \nI: 20 \nD: 5 ",
             "Sure, I have adjusted the prediction widgets\n to show the predictions for the system if the PID tag [TIC105101] was recalibrated"
         };
 
@@ -36,6 +45,20 @@ namespace SmartOperationDx
             DrawGridLines();
             IssueWarning();
             CreateAlarms();
+            SetSafetyInsightText();
+        }
+
+        private void SetSafetyInsightText()
+        {
+            SafetyInsightPitchText.Text =
+                "ABB Ability\u2122 SafetyInsight\u2122 is a digital approach to process safety management for high-hazard process industries.\n" +
+                "It digitalizes early Engineering Technology (ET) data to create the process safety digital twin, to which actual plant operations can be compared.\n" +
+                "Operational data from IT and OT sources is captured through agnostic connectivity.\n" +
+                "The ET data then gives the necessary context to the IT/OT data utilizing the process safety digital twin, providing the\n " +
+                "right information, to the right person, at the right time, to make the right, informed, decision." +
+                "\r\n\r\nABB Ability\u2122 SafetyInsight\u2122 integrates a number of individual modules to form a comprehensive, digital suite of applications.\n" +
+                "You get efficiency throughout your organization by developing an optimum basis of safety, ensuring operational risks\n" +
+                "are managed and identifying opportunities for improvement, optimizing the overall cost of safety.";
         }
 
         private void CreateAlarms()
@@ -120,6 +143,7 @@ namespace SmartOperationDx
             GraphCanvas.Children.Add(xAxis);
             GraphCanvas.Children.Add(yAxis);
         }
+
         private void DrawUnits()
         {
             int unitSize = 20; // Size of each unit in pixels
@@ -155,6 +179,7 @@ namespace SmartOperationDx
                 GraphCanvas.Children.Add(unitLabel);
             }
         }
+
         private void DrawGridLines()
         {
             int unitSize = 60; // Size of each unit in pixels
@@ -195,11 +220,8 @@ namespace SmartOperationDx
                 GraphCanvas.Children.Add(gridLine);
             }
         }
-        private void DrawGraph()
-        {
-            // Clear previous drawings
-            //GraphCanvas.Children.Clear();
 
+        private void DrawGraph() {
             Line targetLine = new Line
             {
                 X1 = 3,
@@ -225,10 +247,8 @@ namespace SmartOperationDx
 
             GraphCanvas.Children.Add(predictionLine);
         }
-        private void DrawUpdatedGraph()
-        {
-            //GraphCanvas.Children.Remove(predictionLine);
 
+        private void DrawUpdatedGraph() {
             Line updatedPrediction = new Line
             {
                 X1 = 3,
@@ -265,8 +285,7 @@ namespace SmartOperationDx
             GraphCanvas.Children.Add(legendLine);
         }
 
-        private void AddLegend()
-        {
+        private void AddLegend() {
             // Create a legend for the diagonal line
             TextBlock legendLabel = new TextBlock
             {
@@ -330,7 +349,7 @@ namespace SmartOperationDx
 
         private async void AiResponse()
         {
-            var responseIndicator = AppendMessage("", "Responding...", Brushes.Aqua, TextAlignment.Right);
+            Paragraph responseIndicator = AppendMessage("", "Responding...", Brushes.Aqua, TextAlignment.Right);
             await Task.Delay(2000);
             AssistantChatWindow.Document.Blocks.Remove(responseIndicator);
             AppendMessage("", GetAiResponse(), Brushes.Aqua, TextAlignment.Right);
